@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void change(char* arr,int size)
+{
+	int j = size, i, sum = 0, tmp_len;
+	for (i = 0; i < size; i++)
+	{
+		if (arr[i] == ' ')
+		{
+			sum++;
+		}
+	}
+	tmp_len = size + sum * 2;
+	while (j>0)
+	{
+		if (arr[j] == ' ')
+		{
+			j--;
+			arr[tmp_len--] = '0';
+			arr[tmp_len--] = '2';
+			arr[tmp_len--] = '%';
+		}
+		else
+		{
+			arr[tmp_len--] = arr[j--];
+		}
+	}
+}
+int main()
+{
+	char arr[100] = { 0 };
+	gets(arr);
+	int size = strlen(arr);
+	change(arr, size);
+	int i = 0;
+	printf("%s", arr);
+	system("pause");
+	return 0;
+
+}
